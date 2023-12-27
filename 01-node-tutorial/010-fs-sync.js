@@ -8,3 +8,12 @@ writeFileSync(
     `Here is the result : ${first}, ${second}`,
     {flag: 'a'}
 )
+var text = ''
+for(let i=0;i<10000;i++){
+    text += `This is line ${i}\n`
+}
+writeFileSync(
+    './content/big.txt',
+    text,
+    {flag: 'a'}
+)
