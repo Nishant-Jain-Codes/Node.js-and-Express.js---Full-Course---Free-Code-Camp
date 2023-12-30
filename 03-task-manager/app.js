@@ -1,11 +1,14 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
 const router = require('./routes/index.js')
 const connectDB = require('./db/connect.js')
+const errorHandlerMiddleware = require(`./middlewares/error-handler.js`)
 require('dotenv').config()
 //middle ware
+app.use(express.static('./public'))
 app.use(express.json())
+app.use(errorHandlerMiddleware)
 //routes
 app.use('/',router)
 // ====
